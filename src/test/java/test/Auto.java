@@ -1,6 +1,6 @@
 package test;
-
-public class Auto {
+public class Auto 
+{
 	String modelo;
 	int precio;
 	Asiento[] asientos;
@@ -11,8 +11,8 @@ public class Auto {
 	
 	int cantidadAsientos() {
 		int cantidad = 0;
-		for(int i = 0; i < asientos.length;i++) {
-			if (asientos[i] instanceof Asiento) {
+		for (Asiento asiento : asientos) {
+			if (asiento != null) {
 				cantidad++;
 			}
 		}
@@ -20,15 +20,14 @@ public class Auto {
 	}
 	
 	String verificarIntegridad() {
-        for(int i = 0; i<asientos.length; i++){
-            if(asientos[i] instanceof Asiento){
-                if (asientos[i].registro != registro){
-                    return "Las piezas no son originales";
-	            }
-            }
-        }
-        if (motor.registro != registro){
-            return "las piezas no son originales";
-        }
-        return "Auto original";
-    }
+		for (Asiento asiento : asientos) {
+			if (asiento.registro != registro) {
+				return "Las piezas no son originales";
+			}
+		}
+		if (motor.registro != this.registro) {
+			return "Las piezas no son originales";
+		}
+		return "Auto original";
+	}
+	}
